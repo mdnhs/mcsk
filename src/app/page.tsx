@@ -38,8 +38,8 @@ export default function Home() {
       <CorgiOfTheMonth /> */}
       <HorizontalDivider />
       <UpcomingEvents />
-      <HorizontalDivider />
-      <FeaturedProducts />
+      {/* <HorizontalDivider />
+      <FeaturedProducts /> */}
     </>
   );
 }
