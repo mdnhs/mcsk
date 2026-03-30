@@ -1,39 +1,34 @@
-import EventList from "@/components/event-list";
+import { eventTabOptions } from "@/app/events/search-params";
+import EventsBrowser from "@/components/events-browser";
 import { getPastEvents, getUpcomingEvents } from "@/sanity/lib/data";
 
-export default async function AllEvents() {
+type EventTab = (typeof eventTabOptions)[number];
+type EventPrice = "all" | "free" | "paid";
+
+export default async function AllEvents({
+  initialTab,
+  initialFilters,
+}: {
+  initialTab: EventTab;
+  initialFilters: {
+    q: string;
+    city: string;
+    venue: string;
+    month: string;
+    price: EventPrice;
+  };
+}) {
   const [upcomingEvents, pastEvents] = await Promise.all([
     getUpcomingEvents(),
     getPastEvents(),
   ]);
 
   return (
-    <div className="mb-60 w-full max-w-(--breakpoint-2xl) px-4 pt-20">
-      <div className="mb-60 flex flex-col items-center">
-        <h1 className="mb-12 text-center font-gill-sans text-5xl text-white">
-          Upcoming Events
-        </h1>
-        {upcomingEvents.length > 0 ? (
-          <EventList events={upcomingEvents} />
-        ) : (
-          <p className="w-ful text-center max-w-(--breakpoint-sm) text-white lg:max-w-7xl">
-            No upcoming events.
-          </p>
-        )}
-      </div>
-
-      <div className="flex flex-col items-center">
-        <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">
-          Past Events
-        </h2>
-        {pastEvents.length > 0 ? (
-          <EventList events={pastEvents} />
-        ) : (
-          <p className="w-full text-center max-w-(--breakpoint-sm) text-white lg:max-w-7xl">
-            No past events.
-          </p>
-        )}
-      </div>
-    </div>
+    <EventsBrowser
+      initialTab={initialTab}
+      initialFilters={initialFilters}
+      upcomingEvents={upcomingEvents}
+      pastEvents={pastEvents}
+    />
   );
 }

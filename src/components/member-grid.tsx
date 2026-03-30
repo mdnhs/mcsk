@@ -1,8 +1,9 @@
 import { getMembers } from "@/sanity/lib/data";
 import { MemberCard } from "@/components/member-card";
+import { Member } from "@/sanity/types";
 
 export default async function MemberGrid() {
-  const data = await getMembers();
+  const data = (await getMembers()) as Member[];
   return (
     <section className="mb-20 w-full max-w-(--breakpoint-2xl) px-4 pt-20">
       <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">

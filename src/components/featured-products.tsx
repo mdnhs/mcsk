@@ -2,9 +2,10 @@ import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { getProducts } from "@/sanity/lib/data";
+import { Product } from "@/sanity/types";
 
 export default async function FeaturedProducts() {
-  const data = await getProducts();
+  const data = (await getProducts()) as Product[];
   return (
     <section className="mb-60 flex w-full max-w-(--breakpoint-2xl) flex-col items-center px-4 pt-20">
       <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">

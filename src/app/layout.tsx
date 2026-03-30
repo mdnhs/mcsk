@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { SanityLive } from "@/sanity/lib/live";
 import PageFooter from "@/components/page-footer";
 import PageHeader from "@/components/page-header";
@@ -86,21 +87,23 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${chunkFive.variable} ${gillSansCustom.variable} ${montserratLight.variable} ${montserratRegular.variable} ${montserrat500.variable} ${montserrat600.variable} ${montserrat700.variable} flex min-h-dvh flex-col items-center font-montserrat-regular antialiased selection:bg-baltimoreGold`}
       >
-        <a
-          href="#main-content"
-          className="sr-only rounded-full bg-baltimoreGold px-4 py-2 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
-        >
-          Skip to main content
-        </a>
-        <PageHeader />
-        <main
-          id="main-content"
-          className="flex h-full w-full grow flex-col items-center bg-neutral-950"
-        >
-          {children}
-        </main>
-        <PageFooter />
-        <SanityLive />
+        <NuqsAdapter>
+          <a
+            href="#main-content"
+            className="sr-only rounded-full bg-baltimoreGold px-4 py-2 text-black focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
+          >
+            Skip to main content
+          </a>
+          <PageHeader />
+          <main
+            id="main-content"
+            className="flex h-full w-full grow flex-col items-center bg-neutral-950"
+          >
+            {children}
+          </main>
+          <PageFooter />
+          <SanityLive />
+        </NuqsAdapter>
       </body>
     </html>
   );
