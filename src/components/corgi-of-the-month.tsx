@@ -9,7 +9,7 @@ export default function CorgiOfTheMonth() {
             <Image
               height={1125}
               width={602}
-              src="https://res.cloudinary.com/dsz45zrla/image/upload/f_auto,q_auto,c_scale,w_320/v1737323034/baltimore-corgis/phone_ut9pvv.png"
+              src="https://res.cloudinary.com/dsz45zrla/image/upload/f_auto,q_auto,c_scale,w_320/v1737323034/Military Collegiate School - Khulna/phone_ut9pvv.png"
               alt="A mobile phone displaying The Baltimore Corgis Instagram page"
               sizes="160px"
             />

@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   `);
 
-  const baseUrl = "https://baltimorecorgis.com";
+  const baseUrl = "https://mcsk-khulna.vercel.app";
 
   const staticRoutes = [
     {

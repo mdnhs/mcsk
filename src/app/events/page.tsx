@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Events",
   description: "View all events",
   alternates: {
-    canonical: "https://baltimorecorgis.com/events",
+    canonical: "https://mcsk-khulna.vercel.app/events",
   },
 };
 

@@ -10,11 +10,11 @@ import UpcomingEvents from "@/components/upcoming-events";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Baltimore Corgis",
+  title: "Military Collegiate School - Khulna",
   description:
-    "Established in 2014, we're a community of Corgi owners based in the Baltimore area and surrounding counties.",
+    "Military Collegiate School Khulna (MCSK) is a residential school for both boys (VII-XII) and girls (VII-XII) offering a sprawling campus spread over 105 acres of lush green lands, situated in the close proximity to city, with connectivity via road and railway communication. Jashore Airport is about an hour plus drive from MCSK. It is approximately 6.5 km North West of Jahanabad Cantonment, Khulna and about 4.5 km South West from Phultala Upazilla.",
   alternates: {
-    canonical: "https://baltimorecorgis.com",
+    canonical: "https://mcsk-khulna.vercel.app",
   },
 };
 
@@ -36,8 +36,6 @@ export default function Home() {
       <AboutSection />
       <HorizontalDivider />
       <MemberGrid />
-      <HorizontalDivider />
-      <CorgiOfTheMonth />
       <HorizontalDivider />
       <UpcomingEvents />
       <HorizontalDivider />

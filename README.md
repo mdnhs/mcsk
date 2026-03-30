@@ -1,6 +1,6 @@
 # Baltimore Corgis Website
 
-View Website - [https://baltimorecorgis.com](https://baltimorecorgis.com)
+View Website - [https://mcsk-khulna.vercel.app](https://mcsk-khulna.vercel.app)
 
 <br />
 
@@ -130,7 +130,7 @@ Two years later, I rebuilt the website with a new tech stack to enhance performa
 
 ## Links
 
-- [Baltimore Corgis website](https://baltimorecorgis.com)
+- [Baltimore Corgis website](https://mcsk-khulna.vercel.app)
 - [Baltimore Corgis group on Facebook](https://www.facebook.com/groups/BaltimoreCorgis/)
 - [Baltimore Corgis Instagram Page](https://www.instagram.com/baltimorecorgis/)
 

@@ -1,9 +1,9 @@
 {
-  "name": "baltimore-corgis",
+  "name": "military-collegiate-school",
   "version": "2.0.0",
   "private": true,
-  "description": "baltimore-corgis",
-  "author": "Andrew D",
+  "description": "Military Collegiate School - Khulna",
+  "author": "Nazmul H. Sourab",
   "scripts": {
     "predev": "pnpm run typegen",
     "dev": "next dev",

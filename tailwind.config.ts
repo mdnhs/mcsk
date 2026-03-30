@@ -15,7 +15,7 @@ export default {
       colors: {
         baltimoreGold: "#c39618",
         baltimoreGoldDarker: "#a17c19",
-        baltimorePurple: "#49336c",
+        baltimorePurple: "#004a15",
         baltimorePurple600: "#463069",
         baltimorePurple700: "#3b2957",
       },

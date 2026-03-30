@@ -27,7 +27,7 @@ const headerNavLinks: NavItem[] = [
   {
     id: 4,
     text: "merch",
-    path: "https://baltimore-corgis-shop.fourthwall.com",
+    path: "https://Military Collegiate School - Khulna-shop.fourthwall.com",
   },
 ];
 

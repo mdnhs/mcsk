@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Rules",
   description: "Event rules and group rules",
   alternates: {
-    canonical: "https://baltimorecorgis.com/rules",
+    canonical: "https://mcsk-khulna.vercel.app/rules",
   },
 };
 
