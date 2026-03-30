@@ -36,6 +36,8 @@ export default function Home() {
       <AboutSection />
       <HorizontalDivider />
       <MemberGrid />
+      {/* <HorizontalDivider />
+      <CorgiOfTheMonth /> */}
       <HorizontalDivider />
       <UpcomingEvents />
       <HorizontalDivider />
