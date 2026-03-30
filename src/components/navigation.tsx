@@ -1,5 +1,7 @@
-import { Suspense } from "react";
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import MobileMenu from "@/components/mobile-menu";
 
 export type NavItem = {
@@ -31,16 +33,28 @@ const headerNavLinks: NavItem[] = [
   },
 ];
 
-export default async function Navigation() {
+export default function Navigation() {
+  const pathname = usePathname();
+
   return (
     <nav>
       {headerNavLinks.length ? (
-        <ul className="hidden lg:flex">
+        <ul className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/6 p-2 shadow-[0_18px_40px_rgba(0,0,0,0.2)] backdrop-blur lg:flex">
           {headerNavLinks.map((navLink) => (
-            <li key={navLink.id} className="ml-4">
+            <li key={navLink.id}>
               <Link
                 href={navLink.path}
-                className="flex items-center justify-center rounded-md px-3 py-1 font-montserrat-light text-base font-semibold text-white hover:text-yellow-400 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-baltimoreGold"
+                target={navLink.path.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  navLink.path.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className={`flex items-center justify-center rounded-full px-4 py-2 font-montserrat-light text-sm font-semibold uppercase tracking-[0.18em] transition-colors focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 ${
+                  pathname === navLink.path
+                    ? "bg-baltimoreGold text-black"
+                    : "text-white hover:bg-white/10 hover:text-yellow-300 active:text-baltimoreGold"
+                }`}
               >
                 {navLink.text}
               </Link>
@@ -49,9 +63,7 @@ export default async function Navigation() {
         </ul>
       ) : null}
       <div className="lg:hidden">
-        <Suspense>
-          <MobileMenu navLinks={headerNavLinks} />
-        </Suspense>
+        <MobileMenu navLinks={headerNavLinks} />
       </div>
     </nav>
   );
