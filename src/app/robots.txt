@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /edit/
+Disallow: /_not-found
+Allow: /events/
+Allow: /events/*
+Allow: /rules
+Allow: /tickets
+
+Sitemap: https://batlimorecorgis.com/sitemap.xml
