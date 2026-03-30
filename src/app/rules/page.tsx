@@ -88,14 +88,14 @@ const groupRules = [
 export default function RulesPage() {
   return (
     <div className="mb-20 flex w-full flex-col items-center px-8 pt-20">
-      <h1 className="mb-12 text-center font-gillSans text-5xl text-white">
+      <h1 className="mb-12 text-center font-gill-sans text-5xl text-white">
         Group Rules
       </h1>
 
       <ul className="mb-16">
         {groupRules.map((rule) => (
           <li className="mb-8 flex w-full max-w-2xl flex-row" key={rule.id}>
-            <span className="mr-8 block font-chunkFive text-8xl text-white">
+            <span className="mr-8 block font-chunk-five text-8xl text-white">
               {rule.id}
             </span>
 
@@ -109,14 +109,14 @@ export default function RulesPage() {
         ))}
       </ul>
 
-      <h2 className="mb-12 text-center font-gillSans text-5xl text-white">
+      <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">
         Event Rules
       </h2>
 
       <ul className="mb-16">
         {eventRules.map((rule) => (
           <li className="mb-8 flex w-full max-w-2xl flex-row" key={rule.id}>
-            <span className="mr-8 block font-chunkFive text-8xl text-white">
+            <span className="mr-8 block font-chunk-five text-8xl text-white">
               {rule.id}
             </span>
 

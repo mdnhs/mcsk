@@ -11,7 +11,7 @@ export default async function AllEvents() {
   return (
     <div className="mb-60 w-full max-w-(--breakpoint-2xl) px-4 pt-20">
       <div className="mb-60 flex flex-col items-center">
-        <h1 className="mb-12 text-center font-gillSans text-5xl text-white">
+        <h1 className="mb-12 text-center font-gill-sans text-5xl text-white">
           Upcoming Events
         </h1>
         {upcomingEvents.length > 0 ? (
@@ -24,7 +24,7 @@ export default async function AllEvents() {
       </div>
 
       <div className="flex flex-col items-center">
-        <h2 className="mb-12 text-center font-gillSans text-5xl text-white">
+        <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">
           Past Events
         </h2>
         {pastEvents.length > 0 ? (

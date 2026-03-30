@@ -80,7 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-baltimorePurple">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${chunkFive.variable} ${gillSansCustom.variable} ${montserratLight.variable} ${montserratRegular.variable} ${montserrat500.variable} ${montserrat600.variable} ${montserrat700.variable} flex min-h-dvh flex-col items-center font-montserratRegular antialiased selection:bg-baltimoreGold`}
+        className={`${geistSans.variable} ${geistMono.variable} ${chunkFive.variable} ${gillSansCustom.variable} ${montserratLight.variable} ${montserratRegular.variable} ${montserrat500.variable} ${montserrat600.variable} ${montserrat700.variable} flex min-h-dvh flex-col items-center font-montserrat-regular antialiased selection:bg-baltimoreGold`}
       >
         <PageHeader />
         <main className="flex h-full w-full grow flex-col items-center bg-neutral-950">

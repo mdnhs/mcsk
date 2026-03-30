@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/aspect-ratio';
@@ -10,18 +10,18 @@
   --color-baltimoreGold: #c39618;
   --color-baltimoreGoldDarker: #a17c19;
   --color-baltimorePurple: #004a15;
-  --color-baltimorePurple600: #463069;
-  --color-baltimorePurple700: #3b2957;
+  --color-baltimorePurple600: #004a09;
+  --color-baltimorePurple700: #004d31;
 
-  --font-geistSans: var(--font-geist-sans), sans-serif;
-  --font-geistMono: var(--font-geist-mono), monospace;
-  --font-chunkFive: var(--font-chunk-five), sans-serif;
-  --font-gillSans: var(--font-gill-sans), sans-serif;
-  --font-montserratLight: var(--font-montserrat-light), sans-serif;
-  --font-montserratRegular: var(--font-montserrat-regular), sans-serif;
-  --font-montserrat500: var(--font-montserrat-500), sans-serif;
-  --font-montserrat600: var(--font-montserrat-600), sans-serif;
-  --font-montserrat700: var(--font-montserrat-700), sans-serif;
+  --font-geist-sans: var(--font-geist-sans), sans-serif;
+  --font-geist-mono: var(--font-geist-mono), monospace;
+  --font-chunk-five: var(--font-chunk-five), sans-serif;
+  --font-gill-sans: var(--font-gill-sans), sans-serif;
+  --font-montserrat-light: var(--font-montserrat-light), sans-serif;
+  --font-montserrat-regular: var(--font-montserrat-regular), sans-serif;
+  --font-montserrat-500: var(--font-montserrat-500), sans-serif;
+  --font-montserrat-600: var(--font-montserrat-600), sans-serif;
+  --font-montserrat-700: var(--font-montserrat-700), sans-serif;
 
   --container-pageWidth: 2000px;
 }
@@ -84,20 +84,20 @@
     scroll-behavior: smooth;
   }
 
-  input[type='number'] {
+  input[type="number"] {
     -moz-appearance: textfield;
   }
 
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  input[type='text'],
-  input[type='password'],
-  input[type='email'],
-  input[type='search'],
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="search"],
   textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -110,7 +110,7 @@
 /* ui */
 
 .ui-button {
-  @apply rounded-xl px-8 py-4 text-center text-lg uppercase focus-visible:outline-hidden focus-visible:ring-3;
+  @apply rounded-xl px-8 py-4 text-center text-lg uppercase focus-visible:ring-3 focus-visible:outline-hidden;
 }
 
 /* portable text */

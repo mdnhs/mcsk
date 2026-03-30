@@ -15,7 +15,7 @@ export function EventCard({ event }: { event: Event }) {
     >
       {event?.name && (
         <div className="flex w-full flex-row  justify-between lg:hidden">
-          <h2 className="mb-4 text-start font-montserrat500 text-2xl text-baltimorePurple">
+          <h2 className="mb-4 text-start font-montserrat-500 text-2xl text-baltimorePurple">
             {event.name}
           </h2>
         </div>
@@ -33,7 +33,7 @@ export function EventCard({ event }: { event: Event }) {
 
       {event?.startTime && (
         <div className="hidden flex-col items-center p-4 px-8 lg:flex">
-          <span className="mb-2 font-chunkFive text-6xl text-baltimorePurple min-w-20 text-center">
+          <span className="mb-2 min-w-20 text-center font-chunk-five text-6xl text-baltimorePurple">
             {new Date(event.startTime).toLocaleString("en-US", {
               timeZone: "America/New_York",
               day: "numeric",
@@ -50,7 +50,7 @@ export function EventCard({ event }: { event: Event }) {
 
       <div className="mb-4 flex w-full flex-col lg:mb-0">
         {event?.name && (
-          <h2 className="mb-0 hidden font-montserrat500 text-3xl text-baltimorePurple lg:mb-2 lg:block">
+          <h2 className="mb-0 hidden font-montserrat-500 text-3xl text-baltimorePurple lg:mb-2 lg:block">
             {event.name}
           </h2>
         )}

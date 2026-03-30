@@ -10,7 +10,7 @@ export default async function UpcomingEvents() {
 
   return (
     <section className="mb-20 flex w-full max-w-(--breakpoint-2xl) flex-col items-center px-4 pt-20">
-      <h2 className="mb-12 text-center font-gillSans text-5xl text-white">
+      <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">
         Upcoming Events
       </h2>
       {nextThreeEvents.length > 0 ? (

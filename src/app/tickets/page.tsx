@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function TicketsPage() {
   return (
     <div className="w-full max-w-4xl px-8 pt-20">
-      <h1 className="mb-12 text-center font-gillSans text-5xl text-white">
+      <h1 className="mb-12 text-center font-gill-sans text-5xl text-white">
         How to Buy Tickets
       </h1>
       <ol className="mb-20 flex flex-col gap-6 text-xl text-white">

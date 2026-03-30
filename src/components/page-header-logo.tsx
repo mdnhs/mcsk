@@ -6,7 +6,7 @@ export default function PageHeaderLogo() {
       href="/"
       id="headerLogo"
       aria-label="Home"
-      className="group mr-12 flex cursor-pointer items-center justify-center rounded-md p-2 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-400 font-gillSans text-white text-4xl font-bold"
+      className="group mr-12 flex cursor-pointer items-center justify-center rounded-md p-2 font-gill-sans text-4xl font-bold text-white focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-400"
     >
       Military Collegiate School - Khulna
     </Link>

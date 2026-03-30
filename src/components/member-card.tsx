@@ -38,7 +38,7 @@ export function MemberCard({
       <h3 className="mb-2 text-center text-base sm:text-lg lg:text-2xl">
         {name}
       </h3>
-      <h4 className="mb-4 text-center font-montserratLight text-sm italic text-neutral-200 group-hover:text-yellow-500 group-active:text-yellow-600 lg:text-lg">
+      <h4 className="mb-4 text-center font-montserrat-light text-sm italic text-neutral-200 group-hover:text-yellow-500 group-active:text-yellow-600 lg:text-lg">
         {subtitle}
       </h4>
     </a>
@@ -59,7 +59,7 @@ export function MemberCard({
       <h3 className="mb-2 text-center text-base sm:text-lg lg:text-2xl">
         {name}
       </h3>
-      <h4 className="mb-4 text-center font-montserratLight text-sm italic text-neutral-200 lg:text-lg">
+      <h4 className="mb-4 text-center font-montserrat-light text-sm italic text-neutral-200 lg:text-lg">
         {subtitle}
       </h4>
     </div>

@@ -6,7 +6,7 @@ export async function AboutSection() {
   const { data } = await sanityFetch({ query: ABOUT_US_QUERY });
   return (
     <section className="mb-20 flex w-full flex-col items-center justify-center px-6 md:px-12">
-      <h1 className="mb-12 text-center font-gillSans text-5xl text-white">
+      <h1 className="mb-12 text-center font-gill-sans text-5xl text-white">
         {data?.title}
       </h1>
       <div className="flex max-w-(--breakpoint-xl) flex-col md:flex-row-reverse">
