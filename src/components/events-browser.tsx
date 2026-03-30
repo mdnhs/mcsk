@@ -102,46 +102,94 @@ export default function EventsBrowser({
     activeFilters.month !== "all",
     activeFilters.price !== "all",
   ].filter(Boolean).length;
+  const activeFilterChips = [
+    activeFilters.q.trim().length > 0 ? `Search: ${activeFilters.q}` : null,
+    activeFilters.city !== "all" ? `City: ${activeFilters.city}` : null,
+    activeFilters.venue !== "all" ? `Venue: ${activeFilters.venue}` : null,
+    activeFilters.month !== "all"
+      ? `Month: ${labelForOption(monthOptions, activeFilters.month)}`
+      : null,
+    activeFilters.price !== "all"
+      ? `Price: ${labelForOption(
+          [
+            { value: "all", label: "Any ticket type" },
+            { value: "free", label: "Free" },
+            { value: "paid", label: "Paid" },
+          ],
+          activeFilters.price
+        )}`
+      : null,
+  ].filter((value): value is string => Boolean(value));
 
   return (
     <div className="mb-60 w-full max-w-pageWidth px-4 pt-20">
-      <div className="mb-12 flex flex-col items-center gap-5 text-center">
-        <h1 className="font-gill-sans text-5xl text-white">Events</h1>
-        <p className="max-w-2xl text-base leading-7 text-white/72 md:text-lg">
-          Browse what&apos;s next or revisit past gatherings. The current view
-          is stored in the URL so it can be shared directly.
-        </p>
-      </div>
+      <section className="relative mb-12 overflow-hidden rounded-[2rem] border border-white/10 bg-linear-to-br from-baltimorePurple via-[#0b2518] to-neutral-950 p-6 text-white shadow-[0_30px_90px_rgba(0,0,0,0.35)] lg:p-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-linear-to-b from-white/8 to-transparent" />
+        <div className="relative flex flex-col gap-8">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.26em] text-yellow-300">
+                Community Calendar
+              </p>
+              <h1 className="mb-4 font-gill-sans text-5xl text-white md:text-6xl">
+                Find the right event faster
+              </h1>
+              <p className="text-base leading-7 text-white/76 md:text-lg">
+                Browse what&apos;s next, revisit past gatherings, and share a
+                filter-ready event view directly from the URL.
+              </p>
+            </div>
 
-      <div className="mb-12 flex flex-wrap items-center justify-center gap-3">
-        {eventTabOptions.map((tabOption) => {
-          const isActive = activeTab === tabOption;
-          const count =
-            tabOption === "upcoming"
-              ? upcomingEvents.length
-              : pastEvents.length;
+            <div className="grid gap-3 sm:grid-cols-3">
+              <MetricCard
+                label="Showing"
+                value={String(events.length)}
+                detail="filtered events"
+              />
+              <MetricCard
+                label="View"
+                value={activeTab === "upcoming" ? "Next" : "Past"}
+                detail={tabLabels[activeTab]}
+              />
+              <MetricCard
+                label="Filters"
+                value={String(activeFilterCount)}
+                detail={activeFilterCount === 1 ? "active filter" : "active filters"}
+              />
+            </div>
+          </div>
 
-          return (
-            <button
-              key={tabOption}
-              type="button"
-              onClick={() => setTab(tabOption)}
-              className={buttonVariants({
-                variant: isActive ? "secondary" : "ghost",
-                className: cn(
-                  "min-w-40 rounded-full border text-sm uppercase tracking-[0.18em]",
-                  isActive
-                    ? "border-baltimoreGold bg-baltimoreGold text-black hover:bg-baltimoreGold/90"
-                    : "border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-yellow-300"
-                ),
-              })}
-              aria-pressed={isActive}
-            >
-              {tabLabels[tabOption]} ({count})
-            </button>
-          );
-        })}
-      </div>
+          <div className="flex flex-wrap items-center gap-3">
+            {eventTabOptions.map((tabOption) => {
+              const isActive = activeTab === tabOption;
+              const count =
+                tabOption === "upcoming"
+                  ? upcomingEvents.length
+                  : pastEvents.length;
+
+              return (
+                <button
+                  key={tabOption}
+                  type="button"
+                  onClick={() => setTab(tabOption)}
+                  className={buttonVariants({
+                    variant: isActive ? "secondary" : "ghost",
+                    className: cn(
+                      "min-w-40 rounded-full border text-sm uppercase tracking-[0.18em]",
+                      isActive
+                        ? "border-baltimoreGold bg-baltimoreGold text-black hover:bg-baltimoreGold/90"
+                        : "border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-yellow-300"
+                    ),
+                  })}
+                  aria-pressed={isActive}
+                >
+                  {tabLabels[tabOption]} ({count})
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <div className="grid gap-8 xl:grid-cols-[320px_minmax(0,1fr)] xl:items-start">
         <aside className="xl:sticky xl:top-24">
@@ -245,10 +293,38 @@ export default function EventsBrowser({
           </Card>
         </aside>
 
-        <div className="flex min-w-0 flex-col items-center">
-          <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">
-            {tabLabels[activeTab]}
-          </h2>
+        <div className="flex min-w-0 flex-col">
+          <div className="mb-8 rounded-[1.75rem] border border-white/10 bg-white/5 p-5 text-white">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <h2 className="font-gill-sans text-4xl text-white">
+                  {tabLabels[activeTab]}
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-white/70 md:text-base">
+                  {activeFilterCount > 0
+                    ? "Filtered results based on your current selections."
+                    : "Showing the full event list for the selected view."}
+                </p>
+              </div>
+              <Badge className="w-max border-transparent bg-baltimoreGold/90 text-black">
+                {events.length} visible
+              </Badge>
+            </div>
+
+            {activeFilterChips.length > 0 ? (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {activeFilterChips.map((chip) => (
+                  <Badge
+                    key={chip}
+                    className="border border-white/10 bg-white/8 text-white"
+                  >
+                    {chip}
+                  </Badge>
+                ))}
+              </div>
+            ) : null}
+          </div>
+
           {events.length > 0 ? (
             <EventList events={events} />
           ) : (
@@ -264,6 +340,26 @@ export default function EventsBrowser({
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function MetricCard({
+  label,
+  value,
+  detail,
+}: {
+  label: string;
+  value: string;
+  detail: string;
+}) {
+  return (
+    <div className="rounded-[1.5rem] border border-white/10 bg-white/7 px-4 py-4 text-left shadow-[0_16px_30px_rgba(0,0,0,0.18)] backdrop-blur-md">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/58">
+        {label}
+      </p>
+      <p className="mt-2 font-gill-sans text-3xl text-white">{value}</p>
+      <p className="mt-1 text-sm text-white/68">{detail}</p>
     </div>
   );
 }
@@ -346,6 +442,10 @@ function withSelectedLabeledOption(
   }
 
   return [{ value: "all", label: "All" }, ...baseOptions];
+}
+
+function labelForOption(options: FilterSelectOption[], value: string) {
+  return options.find((option) => option.value === value)?.label ?? value;
 }
 
 function uniqueMonthOptions(events: Event[]) {

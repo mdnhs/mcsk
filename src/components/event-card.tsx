@@ -10,8 +10,13 @@ export function EventCard({ event }: { event: Event }) {
   const eventImageUrl = event?.mainImage
     ? urlFor(event.mainImage)?.width(550).height(550).url()
     : "https://placehold.co/550x550/png";
+  const eventStartDate = event?.startTime ? new Date(event.startTime) : null;
+  const eventHasEnded =
+    event?.endTime && !Number.isNaN(new Date(event.endTime).getTime())
+      ? new Date(event.endTime) < new Date()
+      : false;
   const eventDate = event?.startTime
-    ? new Date(event.startTime).toLocaleDateString("en-US", {
+    ? eventStartDate?.toLocaleDateString("en-US", {
         timeZone: "America/New_York",
         year: "numeric",
         month: "long",
@@ -33,8 +38,8 @@ export function EventCard({ event }: { event: Event }) {
 
   return (
     <li className="w-full max-w-(--breakpoint-sm) lg:max-w-7xl" key={event._id}>
-      <Card className="overflow-hidden bg-linear-to-br from-white to-neutral-100 text-baltimorePurple transition-transform duration-200 hover:-translate-y-1">
-        <CardContent className="grid gap-5 p-4 lg:grid-cols-[240px_1fr_auto] lg:items-center lg:p-5">
+      <Card className="overflow-hidden bg-linear-to-br from-white via-neutral-50 to-neutral-100 text-baltimorePurple transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_32px_80px_rgba(0,0,0,0.22)]">
+        <CardContent className="grid gap-5 p-4 lg:grid-cols-[240px_minmax(0,1fr)_auto] lg:items-center lg:p-5">
           {eventImageUrl && (
             <Image
               src={eventImageUrl}
@@ -46,6 +51,21 @@ export function EventCard({ event }: { event: Event }) {
           )}
 
           <div className="flex w-full flex-col">
+            <div className="mb-4 flex flex-wrap gap-2">
+              <Badge className="bg-baltimorePurple text-white">
+                {eventHasEnded ? "Past Event" : "Upcoming Event"}
+              </Badge>
+              {event?.admissionPrice ? (
+                <Badge className="bg-baltimoreGold/12 text-baltimorePurple">
+                  {event.admissionPrice}
+                </Badge>
+              ) : (
+                <Badge className="bg-baltimoreGold/12 text-baltimorePurple">
+                  Free Admission
+                </Badge>
+              )}
+            </div>
+
             {event?.name && (
               <h2 className="mb-3 font-montserrat-500 text-2xl lg:text-3xl">
                 {event.name}
@@ -75,17 +95,11 @@ export function EventCard({ event }: { event: Event }) {
                 {event.city}, {event.state}
               </p>
             )}
-
-            {event?.admissionPrice && (
-              <p className="text-lg text-neutral-700">
-                Admission: {event.admissionPrice}
-              </p>
-            )}
           </div>
 
           <div className="flex flex-col gap-4 lg:items-end">
             {event?.startTime && (
-              <div className="hidden min-w-24 rounded-[1.6rem] bg-baltimorePurple px-6 py-5 text-center text-white lg:block">
+              <div className="flex min-w-24 items-center gap-4 rounded-[1.4rem] bg-baltimorePurple px-4 py-4 text-center text-white lg:min-w-28 lg:flex-col lg:px-6 lg:py-5">
                 <span className="block font-chunk-five text-5xl">
                   {new Date(event.startTime).toLocaleString("en-US", {
                     timeZone: "America/New_York",
@@ -107,7 +121,7 @@ export function EventCard({ event }: { event: Event }) {
                 className={buttonVariants({
                   size: "lg",
                   className:
-                    "bg-baltimorePurple text-white hover:bg-baltimoreGold hover:text-black",
+                    "w-full bg-baltimorePurple text-white hover:bg-baltimoreGold hover:text-black lg:w-auto",
                 })}
               >
                 View Details
