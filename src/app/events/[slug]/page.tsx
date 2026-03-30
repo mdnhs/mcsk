@@ -57,10 +57,10 @@ export default async function EventPage({
   const eventHasEnded = endTime ? new Date(endTime) < currentTime : false;
 
   return (
-    <main className="mb-60 flex w-full max-w-screen-xl flex-col p-8 text-white">
+    <main className="mb-60 flex w-full max-w-(--breakpoint-xl) flex-col p-8 text-white">
       <Link
         href="/events"
-        className="mb-16 flex w-max rounded px-4 py-2 hover:text-yellow-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-400"
+        className="mb-16 flex w-max rounded-sm px-4 py-2 hover:text-yellow-300 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-400"
       >
         ← Back to events
       </Link>
@@ -142,7 +142,7 @@ export default async function EventPage({
                 href={eventDetailsButtonURL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ui-button flex w-min whitespace-nowrap bg-yellow-500 text-black hover:bg-yellow-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950 active:bg-yellow-700"
+                className="ui-button flex w-min whitespace-nowrap bg-yellow-500 text-black hover:bg-yellow-600 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 focus-visible:ring-offset-4 focus-visible:ring-offset-neutral-950 active:bg-yellow-700"
               >
                 {eventDetailsButtonText}
               </Link>

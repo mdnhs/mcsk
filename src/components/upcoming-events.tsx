@@ -9,7 +9,7 @@ export default async function UpcomingEvents() {
   const nextThreeEvents = data.slice(0, 3);
 
   return (
-    <section className="mb-20 flex w-full max-w-screen-2xl flex-col items-center px-4 pt-20">
+    <section className="mb-20 flex w-full max-w-(--breakpoint-2xl) flex-col items-center px-4 pt-20">
       <h2 className="mb-12 text-center font-gillSans text-5xl text-white">
         Upcoming Events
       </h2>

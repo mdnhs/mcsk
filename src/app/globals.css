@@ -1,74 +1,116 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* reset */
-html,
-body,
-button,
-header,
-main,
-menu,
-nav,
-footer,
-section,
-article,
-pre,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ol,
-ul,
-li,
-a {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-style: none;
-  font-style: normal;
-  font-weight: normal;
-  list-style: none;
-  text-decoration: none;
-  scroll-behavior: smooth;
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/aspect-ratio';
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-baltimoreGold: #c39618;
+  --color-baltimoreGoldDarker: #a17c19;
+  --color-baltimorePurple: #004a15;
+  --color-baltimorePurple600: #463069;
+  --color-baltimorePurple700: #3b2957;
+
+  --font-geistSans: var(--font-geist-sans), sans-serif;
+  --font-geistMono: var(--font-geist-mono), monospace;
+  --font-chunkFive: var(--font-chunk-five), sans-serif;
+  --font-gillSans: var(--font-gill-sans), sans-serif;
+  --font-montserratLight: var(--font-montserrat-light), sans-serif;
+  --font-montserratRegular: var(--font-montserrat-regular), sans-serif;
+  --font-montserrat500: var(--font-montserrat-500), sans-serif;
+  --font-montserrat600: var(--font-montserrat-600), sans-serif;
+  --font-montserrat700: var(--font-montserrat-700), sans-serif;
+
+  --container-pageWidth: 2000px;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+@utility text-balance {
+  text-wrap: balance;
 }
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="search"],
-textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-/* utilities */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* reset */
+  html,
+  body,
+  button,
+  header,
+  main,
+  menu,
+  nav,
+  footer,
+  section,
+  article,
+  pre,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ol,
+  ul,
+  li,
+  a {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    font-style: normal;
+    font-weight: normal;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
   }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  input[type='search'],
+  textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* utilities */
 }
 
 /* ui */
 
 .ui-button {
-  @apply rounded-xl px-8 py-4 text-center text-lg uppercase focus-visible:outline-none focus-visible:ring;
+  @apply rounded-xl px-8 py-4 text-center text-lg uppercase focus-visible:outline-hidden focus-visible:ring-3;
 }
 
 /* portable text */
@@ -85,5 +127,5 @@ textarea {
 /* Sanity Studio */
 
 #sanity {
-  @apply h-[calc(100dvh-4.375rem)] !important;
+  @apply h-[calc(100dvh-4.375rem)]!;
 }

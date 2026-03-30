@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <section className="mb-16 w-full max-w-[2000px] lg:mb-24">
+      <section className="mb-16 w-full max-w-pageWidth lg:mb-24">
         <Image
           src="https://res.cloudinary.com/dsz45zrla/image/upload/f_auto,q_auto,c_scale,w_2000/v1747165279/IMG_8331_2_eix1ty.jpg"
           alt="A photo of the Baltimore Corgi group at Zen Paw Ranch in 2025"

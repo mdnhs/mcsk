@@ -6,7 +6,7 @@ import { ProductCard } from "@/components/product-card";
 export default async function FeaturedProducts() {
   const { data } = await sanityFetch({ query: PRODUCTS_QUERY });
   return (
-    <section className="mb-60 flex w-full max-w-screen-2xl flex-col items-center px-4 pt-20">
+    <section className="mb-60 flex w-full max-w-(--breakpoint-2xl) flex-col items-center px-4 pt-20">
       <h2 className="mb-12 text-center font-gillSans text-5xl text-white">
         Featured Products
       </h2>

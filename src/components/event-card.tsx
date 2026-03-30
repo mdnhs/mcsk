@@ -10,7 +10,7 @@ export function EventCard({ event }: { event: Event }) {
 
   return (
     <li
-      className="flex w-full max-w-screen-sm flex-col items-center rounded-xl bg-white p-4 lg:max-w-7xl lg:flex-row lg:items-start"
+      className="flex w-full max-w-(--breakpoint-sm) flex-col items-center rounded-xl bg-white p-4 lg:max-w-7xl lg:flex-row lg:items-start"
       key={event._id}
     >
       {event?.name && (

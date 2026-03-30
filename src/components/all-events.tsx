@@ -9,7 +9,7 @@ export default async function AllEvents() {
   const { data: pastEvents } = await sanityFetch({ query: PAST_EVENTS_QUERY });
 
   return (
-    <div className="mb-60 w-full max-w-screen-2xl px-4 pt-20">
+    <div className="mb-60 w-full max-w-(--breakpoint-2xl) px-4 pt-20">
       <div className="mb-60 flex flex-col items-center">
         <h1 className="mb-12 text-center font-gillSans text-5xl text-white">
           Upcoming Events
@@ -17,7 +17,7 @@ export default async function AllEvents() {
         {upcomingEvents.length > 0 ? (
           <EventList events={upcomingEvents} />
         ) : (
-          <p className="w-ful text-center max-w-screen-sm text-white lg:max-w-7xl">
+          <p className="w-ful text-center max-w-(--breakpoint-sm) text-white lg:max-w-7xl">
             No upcoming events.
           </p>
         )}
@@ -30,7 +30,7 @@ export default async function AllEvents() {
         {pastEvents.length > 0 ? (
           <EventList events={pastEvents} />
         ) : (
-          <p className="w-full text-center max-w-screen-sm text-white lg:max-w-7xl">
+          <p className="w-full text-center max-w-(--breakpoint-sm) text-white lg:max-w-7xl">
             No past events.
           </p>
         )}

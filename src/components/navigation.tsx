@@ -40,7 +40,7 @@ export default async function Navigation() {
             <li key={navLink.id} className="ml-4">
               <Link
                 href={navLink.path}
-                className="flex items-center justify-center rounded-md px-3 py-1 font-montserratLight text-base font-semibold text-white hover:text-yellow-400 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-baltimoreGold"
+                className="flex items-center justify-center rounded-md px-3 py-1 font-montserratLight text-base font-semibold text-white hover:text-yellow-400 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-baltimoreGold"
               >
                 {navLink.text}
               </Link>

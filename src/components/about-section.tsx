@@ -9,9 +9,9 @@ export async function AboutSection() {
       <h1 className="mb-12 text-center font-gillSans text-5xl text-white">
         {data?.title}
       </h1>
-      <div className="flex max-w-screen-xl flex-col md:flex-row-reverse">
+      <div className="flex max-w-(--breakpoint-xl) flex-col md:flex-row-reverse">
         {data?.body && data.body.length > 0 && (
-          <div className="mb-8 flex max-w-screen-lg justify-center text-xl text-white md:mb-0 md:text-2xl">
+          <div className="mb-8 flex max-w-(--breakpoint-lg) justify-center text-xl text-white md:mb-0 md:text-2xl">
             <PortableText value={data.body} />
           </div>
         )}

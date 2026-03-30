@@ -32,7 +32,7 @@ export default function TicketsPage() {
       </ol>
       <div className="mb-60 flex w-full flex-col items-center gap-16 lg:flex-row">
         <Link
-          className="flex min-h-[23rem] w-full max-w-[23rem] flex-col items-center rounded-3xl bg-baltimorePurple fill-white p-4 text-white hover:bg-baltimorePurple600 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimorePurple700"
+          className="flex min-h-92 w-full max-w-92 flex-col items-center rounded-3xl bg-baltimorePurple fill-white p-4 text-white hover:bg-baltimorePurple600 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimorePurple700"
           href="https://www.paypal.com/paypalme/sungsc"
         >
           <svg
@@ -119,7 +119,7 @@ export default function TicketsPage() {
           <p>@sungsc</p>
         </Link>
         <Link
-          className="flex min-h-[23rem] w-full max-w-[23rem] flex-col items-center rounded-3xl bg-baltimorePurple fill-white p-4 text-white hover:bg-baltimorePurple600 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimorePurple700"
+          className="flex min-h-92 w-full max-w-92 flex-col items-center rounded-3xl bg-baltimorePurple fill-white p-4 text-white hover:bg-baltimorePurple600 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimorePurple700"
           href="https://account.venmo.com/u/sungsc"
         >
           <svg

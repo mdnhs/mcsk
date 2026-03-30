@@ -33,7 +33,7 @@ export default function MobileMenu({ navLinks }: MobileMenuProps) {
       <button
         aria-label="Open mobile menu"
         onClick={openMobileMenu}
-        className="mr-2 flex h-11 w-11 items-center justify-center rounded-md text-white hover:text-yellow-400 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-500 lg:hidden"
+        className="mr-2 flex h-11 w-11 items-center justify-center rounded-md text-white hover:text-yellow-400 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-500 lg:hidden"
       >
         <Bars3Icon className="h-full w-full" />
       </button>
@@ -41,7 +41,7 @@ export default function MobileMenu({ navLinks }: MobileMenuProps) {
       <Dialog open={isOpen} onClose={closeMobileMenu} className="relative z-10">
         <DialogBackdrop
           transition
-          className="fixed inset-0 bg-black bg-opacity-55 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
+          className="fixed inset-0 bg-black bg-opacity-55 transition-opacity duration-500 ease-in-out data-closed:opacity-0"
         />
 
         <div className="fixed inset-0 overflow-hidden">
@@ -49,7 +49,7 @@ export default function MobileMenu({ navLinks }: MobileMenuProps) {
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-[30%]">
               <DialogPanel
                 transition
-                className="pointer-events-auto w-screen max-w-md transform transition duration-300 ease-in-out data-[closed]:translate-x-full"
+                className="pointer-events-auto w-screen max-w-md transform transition duration-300 ease-in-out data-closed:translate-x-full"
               >
                 <div className="flex h-full flex-col overflow-y-scroll border-l border-solid border-white bg-baltimorePurple/80 shadow-xl backdrop-blur-lg">
                   <div className="flex h-20 items-center px-4">
@@ -61,7 +61,7 @@ export default function MobileMenu({ navLinks }: MobileMenuProps) {
                         <button
                           type="button"
                           onClick={() => closeMobileMenu()}
-                          className="mr-2 flex h-11 w-11 items-center justify-center rounded-md text-white hover:text-yellow-400 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-500"
+                          className="mr-2 flex h-11 w-11 items-center justify-center rounded-md text-white hover:text-yellow-400 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-500"
                         >
                           <span className="sr-only">Close menu</span>
                           <XMarkIcon
@@ -84,7 +84,7 @@ export default function MobileMenu({ navLinks }: MobileMenuProps) {
                                 onClick={() => closeMobileMenu()}
                                 className={`flex items-center justify-center rounded-lg px-3 py-2 text-3xl ${
                                   isActive ? "text-yellow-400" : "text-white"
-                                } hover:text-yellow-400 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-500`}
+                                } hover:text-yellow-400 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-500`}
                               >
                                 {item.text}
                               </Link>

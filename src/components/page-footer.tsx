@@ -8,7 +8,7 @@ export default function PageFooter() {
           <h3 className="mb-4 text-center text-3xl">Contact</h3>
           <a
             href="mailto:baltimorecorgis@gmail.com"
-            className="mb-6 block rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-400"
+            className="mb-6 block rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-400"
           >
             baltimorecorgis@gmail.com
           </a>
@@ -16,7 +16,7 @@ export default function PageFooter() {
           <div className="flex justify-evenly">
             <a
               href="https://www.facebook.com/groups/BaltimoreCorgis"
-              className="h-20 w-20 rounded-3xl p-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300"
+              className="h-20 w-20 rounded-3xl p-2 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300"
             >
               <span className="sr-only">
                 Visit the Baltimore Corgi&apos;s Facebook Page
@@ -35,7 +35,7 @@ export default function PageFooter() {
             </a>
             <a
               href="https://www.instagram.com/baltimorecorgis/"
-              className="h-20 w-20 rounded-3xl p-2 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300"
+              className="h-20 w-20 rounded-3xl p-2 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300"
             >
               <span className="sr-only">
                 Visit the Baltimore Corgi&apos;s Instagram Page
@@ -74,19 +74,19 @@ export default function PageFooter() {
           <h3 className="mb-4 text-center text-3xl">Links</h3>
           <Link
             href="/events"
-            className="mb-2 flex items-center justify-center rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-400"
+            className="mb-2 flex items-center justify-center rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-400"
           >
             <span>events</span>
           </Link>
           <Link
             href="/rules"
-            className="mb-2 flex items-center justify-center rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-400"
+            className="mb-2 flex items-center justify-center rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-400"
           >
             <span>rules</span>
           </Link>
           <Link
             href="/tickets"
-            className="mb-2 flex items-center justify-center rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-yellow-300 active:text-yellow-400"
+            className="mb-2 flex items-center justify-center rounded-lg px-4 py-2 text-lg hover:text-yellow-300 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300 active:text-yellow-400"
           >
             <span>tickets</span>
           </Link>

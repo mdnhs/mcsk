@@ -21,7 +21,7 @@ export function ProductCard({
   return (
     <a
       href={link ?? "#"}
-      className="group flex w-full flex-col items-center rounded-2xl p-2 text-white hover:text-yellow-300 focus-visible:outline-none focus-visible:ring focus-visible:ring-inset focus-visible:ring-yellow-300 active:text-yellow-500 lg:rounded-3xl lg:p-4"
+      className="group flex w-full flex-col items-center rounded-2xl p-2 text-white hover:text-yellow-300 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-yellow-300 active:text-yellow-500 lg:rounded-3xl lg:p-4"
     >
       <Image
         src={productImageUrl || "https://placehold.co/550x550/png"}
