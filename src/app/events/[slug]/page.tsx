@@ -1,23 +1,18 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { urlFor } from "@/sanity/lib/image";
-import { sanityFetch } from "@/sanity/lib/live";
-import { EVENT_QUERY } from "@/sanity/lib/queries";
-
-export const dynamic = "force-dynamic";
+import { getEvent, getEventSlugs } from "@/sanity/lib/data";
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { data: event } = await sanityFetch({
-    query: EVENT_QUERY,
-    params: await params,
-  });
+  const { slug } = await params;
+  const event = await getEvent(slug);
   if (!event) {
     notFound();
   }
@@ -26,15 +21,21 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const events = await getEventSlugs();
+
+  return events.map((event) => ({
+    slug: event.slug.current,
+  }));
+}
+
 export default async function EventPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { data: event } = await sanityFetch({
-    query: EVENT_QUERY,
-    params: await params,
-  });
+  const { slug } = await params;
+  const event = await getEvent(slug);
   if (!event) {
     notFound();
   }

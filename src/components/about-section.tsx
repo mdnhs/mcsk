@@ -1,9 +1,8 @@
 import { PortableText } from "next-sanity";
-import { sanityFetch } from "@/sanity/lib/live";
-import { ABOUT_US_QUERY } from "@/sanity/lib/queries";
+import { getAboutUs } from "@/sanity/lib/data";
 
 export async function AboutSection() {
-  const { data } = await sanityFetch({ query: ABOUT_US_QUERY });
+  const data = await getAboutUs();
   return (
     <section className="mb-20 flex w-full flex-col items-center justify-center px-6 md:px-12">
       <h1 className="mb-12 text-center font-gill-sans text-5xl text-white">

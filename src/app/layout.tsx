@@ -78,7 +78,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-baltimorePurple">
+    <html
+      lang="en"
+      className="bg-baltimorePurple"
+      data-scroll-behavior="smooth"
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${chunkFive.variable} ${gillSansCustom.variable} ${montserratLight.variable} ${montserratRegular.variable} ${montserrat500.variable} ${montserrat600.variable} ${montserrat700.variable} flex min-h-dvh flex-col items-center font-montserrat-regular antialiased selection:bg-baltimoreGold`}
       >

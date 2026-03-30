@@ -1,7 +1,5 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import AllEvents from "@/components/all-events";
-
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Events",

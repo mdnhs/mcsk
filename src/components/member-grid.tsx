@@ -1,9 +1,8 @@
-import { sanityFetch } from "@/sanity/lib/live";
-import { MEMBERS_QUERY } from "@/sanity/lib/queries";
 import { MemberCard } from "@/components/member-card";
+import { getMembers } from "@/sanity/lib/data";
 
 export default async function MemberGrid() {
-  const { data } = await sanityFetch({ query: MEMBERS_QUERY });
+  const data = await getMembers();
   return (
     <section className="mb-20 w-full max-w-(--breakpoint-2xl) px-4 pt-20">
       <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">

@@ -1,20 +1,12 @@
 import type { MetadataRoute } from "next";
-import { client } from "@/sanity/lib/client";
-
-export const dynamic = "force-dynamic";
+import { cacheLife } from "next/cache";
+import { getSitemapEvents } from "@/sanity/lib/data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const events = await client.fetch<
-    {
-      slug: { current: string };
-      _updatedAt: string;
-    }[]
-  >(`
-    *[_type == "event"]{
-      slug,
-      _updatedAt
-    }
-  `);
+  "use cache";
+  cacheLife("hours");
+
+  const events = await getSitemapEvents();
 
   const baseUrl = "https://mcsk-khulna.vercel.app";
 

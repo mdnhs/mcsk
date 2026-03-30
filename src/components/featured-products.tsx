@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { sanityFetch } from "@/sanity/lib/live";
-import { PRODUCTS_QUERY } from "@/sanity/lib/queries";
 import { ProductCard } from "@/components/product-card";
+import { getProducts } from "@/sanity/lib/data";
 
 export default async function FeaturedProducts() {
-  const { data } = await sanityFetch({ query: PRODUCTS_QUERY });
+  const data = await getProducts();
   return (
     <section className="mb-60 flex w-full max-w-(--breakpoint-2xl) flex-col items-center px-4 pt-20">
       <h2 className="mb-12 text-center font-gill-sans text-5xl text-white">

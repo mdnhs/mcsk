@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { sanityFetch } from "@/sanity/lib/live";
-import { UPCOMING_EVENTS_QUERY } from "@/sanity/lib/queries";
 import EventList from "@/components/event-list";
+import { getUpcomingEvents } from "@/sanity/lib/data";
 
 export default async function UpcomingEvents() {
-  const { data } = await sanityFetch({ query: UPCOMING_EVENTS_QUERY });
+  const data = await getUpcomingEvents();
 
   const nextThreeEvents = data.slice(0, 3);
 

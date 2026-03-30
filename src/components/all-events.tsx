@@ -1,12 +1,11 @@
-import { sanityFetch } from "@/sanity/lib/live";
-import { PAST_EVENTS_QUERY, UPCOMING_EVENTS_QUERY } from "@/sanity/lib/queries";
 import EventList from "@/components/event-list";
+import { getPastEvents, getUpcomingEvents } from "@/sanity/lib/data";
 
 export default async function AllEvents() {
-  const { data: upcomingEvents } = await sanityFetch({
-    query: UPCOMING_EVENTS_QUERY,
-  });
-  const { data: pastEvents } = await sanityFetch({ query: PAST_EVENTS_QUERY });
+  const [upcomingEvents, pastEvents] = await Promise.all([
+    getUpcomingEvents(),
+    getPastEvents(),
+  ]);
 
   return (
     <div className="mb-60 w-full max-w-(--breakpoint-2xl) px-4 pt-20">
