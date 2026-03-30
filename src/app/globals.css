@@ -118,12 +118,6 @@
   /* utilities */
 }
 
-/* ui */
-
-.ui-button {
-  @apply rounded-xl px-8 py-4 text-center text-lg uppercase focus-visible:ring-3 focus-visible:outline-hidden;
-}
-
 /* portable text */
 
 .portable-text-event-details {

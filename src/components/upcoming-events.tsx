@@ -1,5 +1,6 @@
 import Link from "next/link";
 import EventList from "@/components/event-list";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { getUpcomingEvents } from "@/sanity/lib/data";
 
 export default async function UpcomingEvents() {
@@ -21,7 +22,11 @@ export default async function UpcomingEvents() {
       )}
       <Link
         href="/events"
-        className="ui-button bg-baltimorePurple  text-white hover:bg-baltimoreGold focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimoreGoldDarker"
+        className={buttonVariants({
+          size: "lg",
+          className:
+            "bg-baltimorePurple text-white hover:bg-baltimoreGold hover:text-black",
+        })}
       >
         View All Events
       </Link>

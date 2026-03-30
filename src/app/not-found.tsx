@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button-variants";
 
 export default function NotFound() {
   return (
@@ -7,7 +8,10 @@ export default function NotFound() {
       <h2 className="mb-8 text-2xl text-neutral-300">Page Not Found</h2>
       <Link
         href="/"
-        className="ui-button bg-baltimorePurple  text-white hover:bg-baltimorePurple600 focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimorePurple700"
+        className={buttonVariants({
+          size: "lg",
+          className: "bg-baltimorePurple text-white hover:bg-baltimorePurple600",
+        })}
       >
         Go back home
       </Link>

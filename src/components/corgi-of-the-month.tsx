@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function CorgiOfTheMonth() {
   return (
@@ -24,9 +25,13 @@ export default function CorgiOfTheMonth() {
               className="flex rounded-2xl p-2 focus-visible:outline-hidden focus-visible:ring-3 focus-visible:ring-yellow-300"
               href="https://docs.google.com/forms/d/e/1FAIpQLScuZM7H0AbcYEx2f4Nbyol46tobRUrzx5PXgQcy720ynd_RYw/viewform"
             >
-              <span className="ui-button bg-white text-baltimorePurple hover:bg-baltimoreGold active:bg-baltimoreGoldDarker">
-                SIGN UP
-              </span>
+              <Button
+                type="button"
+                size="lg"
+                className="bg-white text-baltimorePurple hover:bg-baltimoreGold"
+              >
+                Sign Up
+              </Button>
             </a>
           </div>
         </div>

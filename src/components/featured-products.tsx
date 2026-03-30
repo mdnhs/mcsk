@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { getProducts } from "@/sanity/lib/data";
 
 export default async function FeaturedProducts() {
@@ -18,7 +19,11 @@ export default async function FeaturedProducts() {
       </div>
       <Link
         href="https://Military Collegiate School - Khulna-shop.fourthwall.com"
-        className="ui-button bg-baltimorePurple text-white hover:bg-baltimoreGold focus-visible:ring-yellow-300 focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-950 active:bg-baltimoreGoldDarker"
+        className={buttonVariants({
+          size: "lg",
+          className:
+            "bg-baltimorePurple text-white hover:bg-baltimoreGold hover:text-black",
+        })}
       >
         View All Products
       </Link>

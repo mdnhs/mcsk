@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { AboutSection } from "@/components/about-section";
 // import CorgiOfTheMonth from "@/components/corgi-of-the-month";
-import FeaturedProducts from "@/components/featured-products";
 import { HorizontalDivider } from "@/components/horizontal-divider";
 import MemberGrid from "@/components/member-grid";
 import UpcomingEvents from "@/components/upcoming-events";
