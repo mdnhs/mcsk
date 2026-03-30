@@ -15,7 +15,9 @@ import "@sanity/client";
  * ---------------------------------------------------------------------------------
  */
 
-// Source: schema.json
+export declare const internalGroqTypeReferenceTo: unique symbol;
+
+// Source: src/sanity/schema.json
 export type AboutUs = {
   _id: string;
   _type: "aboutUs";
@@ -23,41 +25,45 @@ export type AboutUs = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }
-  >;
+  body?: BlockContent;
 };
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type BlockContent = Array<
+  | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }
+  | {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }
+>;
 
 export type Product = {
   _id: string;
@@ -69,12 +75,7 @@ export type Product = {
   subtitle?: string;
   position?: number;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -82,6 +83,22 @@ export type Product = {
   };
   imageAltText?: string;
   link?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type Member = {
@@ -94,12 +111,7 @@ export type Member = {
   subtitle?: string;
   position?: number;
   image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -124,12 +136,7 @@ export type Event = {
   state?: string;
   admissionPrice?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -158,40 +165,11 @@ export type Event = {
   eventDetailsButtonURL?: string;
 };
 
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }>;
-      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-      listItem?: "bullet";
-      markDefs?: Array<{
-        href?: string;
-        _type: "link";
-        _key: string;
-      }>;
-      level?: number;
-      _type: "block";
-      _key: string;
-    }
-  | {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: "image";
-      _key: string;
-    }
->;
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
 
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
@@ -219,20 +197,16 @@ export type SanityImageDimensions = {
   aspectRatio?: number;
 };
 
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
+export type SanityImageMetadata = {
+  _type: "sanity.imageMetadata";
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  thumbHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
 };
 
 export type SanityFileAsset = {
@@ -255,6 +229,13 @@ export type SanityFileAsset = {
   path?: string;
   url?: string;
   source?: SanityAssetSourceData;
+};
+
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
 };
 
 export type SanityImageAsset = {
@@ -280,17 +261,6 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type SanityImageMetadata = {
-  _type: "sanity.imageMetadata";
-  location?: Geopoint;
-  dimensions?: SanityImageDimensions;
-  palette?: SanityImagePalette;
-  lqip?: string;
-  blurHash?: string;
-  hasAlpha?: boolean;
-  isOpaque?: boolean;
-};
-
 export type Geopoint = {
   _type: "geopoint";
   lat?: number;
@@ -298,41 +268,29 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
-
 export type AllSanitySchemaTypes =
   | AboutUs
+  | SanityImageAssetReference
+  | BlockContent
   | Product
+  | SanityImageCrop
+  | SanityImageHotspot
   | Member
   | Event
-  | BlockContent
+  | Slug
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityImageAsset
   | SanityImageMetadata
-  | Geopoint
-  | Slug
-  | SanityAssetSourceData;
-export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./src/sanity/lib/queries.ts
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: EVENT_QUERY
 // Query: *[_type == "event" && slug.current == $slug][0] {    ...,  }
-export type EVENT_QUERYResult = {
+export type EVENT_QUERY_RESULT = {
   _id: string;
   _type: "event";
   _createdAt: string;
@@ -347,12 +305,7 @@ export type EVENT_QUERYResult = {
   state?: string;
   admissionPrice?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -380,9 +333,11 @@ export type EVENT_QUERYResult = {
   eventDetailsButtonText?: string;
   eventDetailsButtonURL?: string;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: EVENTS_QUERY
 // Query: *[_type == "event" && defined(slug.current) && defined(startTime)] {    ...,  } | order(startTime desc)
-export type EVENTS_QUERYResult = Array<{
+export type EVENTS_QUERY_RESULT = Array<{
   _id: string;
   _type: "event";
   _createdAt: string;
@@ -397,12 +352,7 @@ export type EVENTS_QUERYResult = Array<{
   state?: string;
   admissionPrice?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -430,9 +380,11 @@ export type EVENTS_QUERYResult = Array<{
   eventDetailsButtonText?: string;
   eventDetailsButtonURL?: string;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: UPCOMING_EVENTS_QUERY
 // Query: *[_type == "event" && defined(slug.current) && defined(startTime) && endTime >= now()] {    ...,  } | order(startTime asc)
-export type UPCOMING_EVENTS_QUERYResult = Array<{
+export type UPCOMING_EVENTS_QUERY_RESULT = Array<{
   _id: string;
   _type: "event";
   _createdAt: string;
@@ -447,12 +399,7 @@ export type UPCOMING_EVENTS_QUERYResult = Array<{
   state?: string;
   admissionPrice?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -480,9 +427,11 @@ export type UPCOMING_EVENTS_QUERYResult = Array<{
   eventDetailsButtonText?: string;
   eventDetailsButtonURL?: string;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: PAST_EVENTS_QUERY
 // Query: *[_type == "event" && defined(slug.current) && defined(startTime) && endTime < now()] {    ...,  } | order(startTime desc)
-export type PAST_EVENTS_QUERYResult = Array<{
+export type PAST_EVENTS_QUERY_RESULT = Array<{
   _id: string;
   _type: "event";
   _createdAt: string;
@@ -497,12 +446,7 @@ export type PAST_EVENTS_QUERYResult = Array<{
   state?: string;
   admissionPrice?: string;
   mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -530,59 +474,25 @@ export type PAST_EVENTS_QUERYResult = Array<{
   eventDetailsButtonText?: string;
   eventDetailsButtonURL?: string;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: ABOUT_US_QUERY
 // Query: *[_type == "aboutUs"][0] {    title,    body  }
-export type ABOUT_US_QUERYResult = {
+export type ABOUT_US_QUERY_RESULT = {
   title: string | null;
-  body: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }
-  > | null;
+  body: BlockContent | null;
 } | null;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: MEMBERS_QUERY
 // Query: *[_type == "member"] {    _id,    name,    subtitle,    position,    image,    imageAltText,    link  } | order(position asc)
-export type MEMBERS_QUERYResult = Array<{
+export type MEMBERS_QUERY_RESULT = Array<{
   _id: string;
   name: string | null;
   subtitle: string | null;
   position: number | null;
   image: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -591,20 +501,17 @@ export type MEMBERS_QUERYResult = Array<{
   imageAltText: string | null;
   link: string | null;
 }>;
+
+// Source: src/sanity/lib/queries.ts
 // Variable: PRODUCTS_QUERY
 // Query: *[_type == "product"] {    _id,    name,    subtitle,    position,    image,    imageAltText,    link  } | order(position asc)
-export type PRODUCTS_QUERYResult = Array<{
+export type PRODUCTS_QUERY_RESULT = Array<{
   _id: string;
   name: string | null;
   subtitle: string | null;
   position: number | null;
   image: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
+    asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
@@ -616,12 +523,12 @@ export type PRODUCTS_QUERYResult = Array<{
 
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "event" && slug.current == $slug][0] {\n    ...,\n  }\n': EVENT_QUERYResult;
-    '\n  *[_type == "event" && defined(slug.current) && defined(startTime)] {\n    ...,\n  } | order(startTime desc)\n': EVENTS_QUERYResult;
-    '\n  *[_type == "event" && defined(slug.current) && defined(startTime) && endTime >= now()] {\n    ...,\n  } | order(startTime asc)\n': UPCOMING_EVENTS_QUERYResult;
-    '\n  *[_type == "event" && defined(slug.current) && defined(startTime) && endTime < now()] {\n    ...,\n  } | order(startTime desc)\n': PAST_EVENTS_QUERYResult;
-    '\n  *[_type == "aboutUs"][0] {\n    title,\n    body\n  }\n': ABOUT_US_QUERYResult;
-    '\n  *[_type == "member"] {\n    _id,\n    name,\n    subtitle,\n    position,\n    image,\n    imageAltText,\n    link\n  } | order(position asc)\n': MEMBERS_QUERYResult;
-    '\n  *[_type == "product"] {\n    _id,\n    name,\n    subtitle,\n    position,\n    image,\n    imageAltText,\n    link\n  } | order(position asc)\n': PRODUCTS_QUERYResult;
+    '\n  *[_type == "event" && slug.current == $slug][0] {\n    ...,\n  }\n': EVENT_QUERY_RESULT;
+    '\n  *[_type == "event" && defined(slug.current) && defined(startTime)] {\n    ...,\n  } | order(startTime desc)\n': EVENTS_QUERY_RESULT;
+    '\n  *[_type == "event" && defined(slug.current) && defined(startTime) && endTime >= now()] {\n    ...,\n  } | order(startTime asc)\n': UPCOMING_EVENTS_QUERY_RESULT;
+    '\n  *[_type == "event" && defined(slug.current) && defined(startTime) && endTime < now()] {\n    ...,\n  } | order(startTime desc)\n': PAST_EVENTS_QUERY_RESULT;
+    '\n  *[_type == "aboutUs"][0] {\n    title,\n    body\n  }\n': ABOUT_US_QUERY_RESULT;
+    '\n  *[_type == "member"] {\n    _id,\n    name,\n    subtitle,\n    position,\n    image,\n    imageAltText,\n    link\n  } | order(position asc)\n': MEMBERS_QUERY_RESULT;
+    '\n  *[_type == "product"] {\n    _id,\n    name,\n    subtitle,\n    position,\n    image,\n    imageAltText,\n    link\n  } | order(position asc)\n': PRODUCTS_QUERY_RESULT;
   }
 }
